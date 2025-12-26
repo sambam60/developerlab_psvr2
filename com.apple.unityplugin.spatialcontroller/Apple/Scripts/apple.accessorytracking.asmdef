@@ -1,0 +1,22 @@
+{
+    "name": "apple.accessorytracking",
+    "rootNamespace": "",
+    "references": [
+        "Apple.Core",
+        "Unity.Mathematics",
+        "Unity.VisualScripting",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [
+        "Editor",
+        "VisionOS"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

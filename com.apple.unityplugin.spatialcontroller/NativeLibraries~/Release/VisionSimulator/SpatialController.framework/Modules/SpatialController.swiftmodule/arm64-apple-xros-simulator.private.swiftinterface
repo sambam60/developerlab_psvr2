@@ -1,0 +1,129 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2.1 effective-5.10 (swiftlang-6.2.1.4.8 clang-1700.4.4.1)
+// swift-module-flags: -target arm64-apple-xros26.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name SpatialController
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.1
+import ARKit
+import CoreGraphics
+import CoreHaptics
+import Foundation
+import GameController
+import OSLog
+@_exported import SpatialController
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_cdecl("SpatialController_CreateHapticsEngine")
+public func SpatialController_CreateHapticsEngine(uniqueId: SpatialController.char_p, locality: SpatialController.SCHapticsLocality) -> Swift.Bool
+#if compiler(>=5.3) && $NonescapableTypes
+@_cdecl("SpatialController_StopHapticsEngine")
+public func SpatialController_StopHapticsEngine(uniqueId: SpatialController.char_p, locality: SpatialController.SCHapticsLocality, onCompleted: SpatialController.SCStopHapticEngineCompletedCallback, context: Swift.UnsafeMutableRawPointer?) -> Swift.Bool
+#endif
+#if compiler(>=5.3) && $NonescapableTypes
+@_cdecl("SpatialController_PlayHapticsData")
+public func SpatialController_PlayHapticsData(uniqueId: SpatialController.char_p, data: SpatialController.uchar_p, dataLength: Swift.Int, locality: SpatialController.SCHapticsLocality, onFinished: SpatialController.SCHapticEngineFinishedCallback, context: Swift.UnsafeMutableRawPointer?) -> Swift.Bool
+#endif
+#if compiler(>=5.3) && $NonescapableTypes
+@available(iOS 14.0, tvOS 14.0, macOS 11.0, *)
+public func createHapticsEngine(for controller: GameController.GCController, withLocality locality: GameController.GCHapticsLocality, uuid: Swift.String) -> CoreHaptics.CHHapticEngine?
+#endif
+@available(iOS 14.0, tvOS 14.0, macOS 11.0, *)
+public func shutdownExistingHapticsEnginesForController(uuid: Swift.String)
+@available(iOS 14.0, tvOS 14.0, macOS 11.0, *)
+public func shutdownExistingHapticsEngineForController(uuid: Swift.String, locality: GameController.GCHapticsLocality)
+extension Swift.String {
+  public func toCharPCopy() -> SpatialController.char_p
+}
+extension Swift.UnsafeMutablePointer where Pointee == Swift.Int8 {
+  public func toString() -> Swift.String
+}
+extension Foundation.Data {
+  public func toUCharP() -> SpatialController.uchar_p
+}
+extension Swift.UnsafeMutablePointer where Pointee == Swift.UInt8 {
+  public func toData(count: Swift.Int) -> Foundation.Data
+}
+extension Swift.Error {
+  public func code() -> Swift.Int
+  public func toSCError() -> SpatialController.SCError
+}
+extension Swift.Array {
+  public func toUnsafeMutablePointer() -> Swift.UnsafeMutablePointer<Element>
+}
+extension Swift.UnsafeMutablePointer {
+  public func toArray(length: Swift.Int) -> [Pointee]
+  public func toArray<T>(length: Swift.Int) -> [T]
+}
+extension Swift.Array where Element == SpatialController.SCController {
+  public func toSCControllers() -> SpatialController.SCControllers
+}
+extension Swift.Array where Element == ARKit.Accessory.LocationName {
+  public func toSCAccessoryLocations() -> SpatialController.SCAccessoryLocations
+}
+extension Swift.Array where Element == SpatialController.SCAccessory {
+  public func toSCAccessories() -> SpatialController.SCAccessories
+}
+extension Swift.Array where Element == SpatialController.SCAccessoryAnchor {
+  public func toSCAccessoryAnchors() -> SpatialController.SCAccessoryAnchors
+}
+extension Swift.Array where Element == SpatialController.SCPose {
+  public func toSCPoses() -> SpatialController.SCPoses
+}
+public typealias char_p = Swift.UnsafeMutablePointer<Swift.Int8>
+public typealias uchar_p = Swift.UnsafeMutablePointer<Swift.UInt8>
+public typealias ErrorCallback = @convention(c) (SpatialController.SCError) -> Swift.Void
+public typealias SuccessCallback = @convention(c) () -> Swift.Void
+@_cdecl("SpatialController_Init")
+public func SpatialController_Init()
+@_cdecl("SpatialController_Destroy")
+public func SpatialController_Destroy()
+@_cdecl("SpatialController_SetControllerConnectionHandlers")
+public func SpatialController_SetControllerConnectionHandlers(onConnected: SpatialController.SCControllerConnectionCallback, onDisconnected: SpatialController.SCControllerConnectionCallback) -> Swift.Bool
+@_cdecl("SpatialController_SetAccessoryConnectionHandlers")
+public func SpatialController_SetAccessoryConnectionHandlers(onConnected: SpatialController.SCAccessoryConnectionCallback, onDisconnected: SpatialController.SCAccessoryConnectionCallback) -> Swift.Bool
+#if compiler(>=5.3) && $NonescapableTypes
+@_cdecl("SpatialController_GetConnectedControllers")
+public func SpatialController_GetConnectedControllers(callback: SpatialController.SCControllersCallback, context: Swift.UnsafeMutableRawPointer?) -> Swift.Bool
+#endif
+#if compiler(>=5.3) && $NonescapableTypes
+@_cdecl("SpatialController_GetConnectedController")
+public func SpatialController_GetConnectedController(uniqueId: SpatialController.char_p, callback: SpatialController.SCControllerCallback, context: Swift.UnsafeMutableRawPointer?) -> Swift.Bool
+#endif
+#if compiler(>=5.3) && $NonescapableTypes
+@_cdecl("SpatialController_GetConnectedAccessories")
+public func SpatialController_GetConnectedAccessories(callback: SpatialController.SCAccessoriesCallback, context: Swift.UnsafeMutableRawPointer?) -> Swift.Bool
+#endif
+#if compiler(>=5.3) && $NonescapableTypes
+@_cdecl("SpatialController_GetConnectedAccessory")
+public func SpatialController_GetConnectedAccessory(uniqueId: SpatialController.char_p, callback: SpatialController.SCAccessoryCallback, context: Swift.UnsafeMutableRawPointer?) -> Swift.Bool
+#endif
+@_cdecl("SpatialController_ConfigureDefaultControllerSetting")
+public func SpatialController_ConfigureDefaultControllerSetting(setting: SpatialController.SCControllerSetting, value: Swift.Int32) -> Swift.Bool
+@_cdecl("SpatialController_ConfigureControllerSetting")
+public func SpatialController_ConfigureControllerSetting(uniqueId: SpatialController.char_p, setting: SpatialController.SCControllerSetting, value: Swift.Int32) -> Swift.Bool
+#if compiler(>=5.3) && $NonescapableTypes
+@_cdecl("SpatialController_GetControllerInputInfoForInputName")
+public func SpatialController_GetControllerInputInfoForInputName(uniqueId: SpatialController.char_p, inputName: SpatialController.SCControllerInputName, callback: SpatialController.SCGetControllerInputInfoForInputNameCallback, context: Swift.UnsafeMutableRawPointer?) -> Swift.Bool
+#endif
+#if compiler(>=5.3) && $NonescapableTypes
+@_cdecl("SpatialController_GetSymbolForInputName")
+public func SpatialController_GetSymbolForInputName(uniqueId: SpatialController.char_p, inputName: SpatialController.SCControllerInputName, symbolScale: SpatialController.SCUIImageSymbolScale, renderingMode: SpatialController.SCUIImageRenderingMode, callback: SpatialController.SCGetSymbolForInputNameCallback, context: Swift.UnsafeMutableRawPointer?) -> Swift.Bool
+#endif
+@_cdecl("SpatialController_SetControllerLightColor")
+public func SpatialController_SetControllerLightColor(uniqueId: SpatialController.char_p, r: Swift.Float, g: Swift.Float, b: Swift.Float) -> Swift.Bool
+#if compiler(>=5.3) && $NonescapableTypes
+@_cdecl("SpatialController_PollController")
+public func SpatialController_PollController(uniqueId: SpatialController.char_p, callback: SpatialController.SCControllerStateCallback, context: Swift.UnsafeMutableRawPointer?) -> Swift.Bool
+#endif
+@_cdecl("SpatialController_GetCurrentTime")
+public func SpatialController_GetCurrentTime() -> SpatialController.SCTimeValue
+@_cdecl("SpatialController_GetPredictedNextFrameTime")
+public func SpatialController_GetPredictedNextFrameTime() -> SpatialController.SCTimeValue
+#if compiler(>=5.3) && $NonescapableTypes
+@_cdecl("SpatialController_PredictAnchor")
+public func SpatialController_PredictAnchor(uniqueId: SpatialController.char_p, time: SpatialController.SCTimeValue, callback: SpatialController.SCAccessoryAnchorCallback, context: Swift.UnsafeMutableRawPointer?) -> Swift.Bool
+#endif
+@_cdecl("SpatialController_GetAccessoryTrackingAuthorizationState")
+public func SpatialController_GetAccessoryTrackingAuthorizationState() -> SpatialController.SCAccessoryTrackingAuthorizationState
+@_cdecl("SpatialController_GetAccessoryTrackingState")
+public func SpatialController_GetAccessoryTrackingState() -> SpatialController.SCAccessoryTrackingState

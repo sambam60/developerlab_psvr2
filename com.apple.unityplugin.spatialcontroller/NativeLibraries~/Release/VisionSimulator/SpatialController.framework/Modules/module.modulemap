@@ -1,0 +1,6 @@
+framework module SpatialController {
+  umbrella header "SpatialController.h"
+  export *
+
+  module * { export * }
+}
